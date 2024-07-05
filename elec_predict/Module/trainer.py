@@ -8,13 +8,13 @@ from torch.utils.tensorboard import SummaryWriter
 
 class Trainer:
 
-    def __init__(self, model, optimizer, root_dir, verbose=32, lr_scheduler=None):
+    def __init__(self, model, optimizer, root_dir='./', verbose=32, lr_scheduler=None):
         self.model = model
         self.optimizer = optimizer
         self.lr_scheduler = lr_scheduler
         self.root_dir = root_dir
         self.log_dir = os.path.join(root_dir, 'logs')
-        self.model_dir = os.path.join(root_dir, 'checkpoints')
+        self.model_dir = os.path.join(root_dir, 'output')
         for i in [self.root_dir, self.log_dir, self.model_dir]:
             if not os.path.exists(i):
                 os.mkdir(i)
