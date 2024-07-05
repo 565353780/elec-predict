@@ -39,8 +39,19 @@ class ElecDataset(Dataset):
 
         self.id_idxs = LabelEncoder().fit_transform(id_array)
         self.unique_id_idxs = np.unique(self.id_idxs)
-        print(self.unique_id_idxs)
-        exit()
+
+        for unique_id in self.unique_id_idxs:
+            current_id_mask = self.id_idxs == unique_id
+            current_date_array = date_array[current_id_mask]
+            current_type_array = type_array[current_id_mask]
+            current_target_array = target_array[current_id_mask]
+
+            Z = zip(current_date_array.tolist(), current_type_array.tolist())
+            Z = sorted(Z,reverse=True)
+            current_type_array = zip(*Z)[1]
+            print(test)
+            print(current_type_array)
+            exit()
 
         train_ratio = 0.6
         valid_ratio = 0.2
