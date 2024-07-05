@@ -13,7 +13,12 @@ from torch.utils.data import DataLoader
 
 from elec_predict.Data.value import Value
 from elec_predict.Dataset.seq2seq import Seq2SeqDataset
+from elec_predict.Dataset.elec import ElecDataset
 from elec_predict.Module.seq2seq_sampler import Seq2SeqSampler
+
+
+data_file_path = '/Users/fufu/Downloads/Dataset/Elec/train.csv'
+elec_dataset = ElecDataset(data_file_path, 'train', [100, 90, 10])
 
 
 def seq2seq_collate_fn(batch):
